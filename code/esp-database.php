@@ -11,8 +11,8 @@
 <?php
 $servername = "localhost";
 $dbname = "SensorData_Table";
-$username = "your_username"; // Update this to your actual username
-$password = "password"; // Update this to your actual password
+$username = "root"; // Update this to your actual username
+$password = ""; // Update this to your actual password
 
   function insertReading($sensor, $location, $value1, $value2, $value3) {
     global $servername, $username, $password, $dbname;
