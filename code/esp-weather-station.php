@@ -23,9 +23,27 @@
     }
 
     $last_reading = getLastReadings();
-    $last_reading_temp = $last_reading["value1"];
-    $last_reading_humi = $last_reading["value2"];
-    $last_reading_time = $last_reading["reading_time"];
+    if (isset($last_reading) && is_array($last_reading)) {
+        // Access array elements here
+        $last_reading_temp = $last_reading["value1"];
+        $last_reading_humi = $last_reading["value2"];
+        $last_reading_time = $last_reading["reading_time"];
+    } else {
+        // Handle the case where $last_reading is null or not an array
+        echo "Error: $last_reading is not a valid array";
+    }
+    if (isset($last_reading['value1']) && isset($last_reading['value2']) && isset($last_reading['reading_time'])) {
+        // Access array elements here
+        $last_reading_temp = $last_reading["value1"];
+        $last_reading_humi = $last_reading["value2"];
+        $last_reading_time = $last_reading["reading_time"];
+    } else {
+        // Handle missing keys
+       // echo "Error: Missing keys in $last_reading array";
+    }
+    $last_reading_temp = isset($last_reading['value1']) ? $last_reading['value1'] : 'default_value';
+    $last_reading_humi = isset($last_reading['value2']) ? $last_reading['value2'] : 'default_value';
+    $last_reading_time = isset($last_reading['reading_time']) ? $last_reading['reading_time'] : 'default_value';
 
     // Uncomment to set timezone to - 1 hour (you can change 1 to any number)
     //$last_reading_time = date("Y-m-d H:i:s", strtotime("$last_reading_time - 1 hours"));
